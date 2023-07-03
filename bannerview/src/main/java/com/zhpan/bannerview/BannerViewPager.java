@@ -333,6 +333,7 @@ public class BannerViewPager<T> extends RelativeLayout implements LifecycleObser
       mIndicatorLayout.removeAllViews();
       mIndicatorLayout.addView((View) mIndicatorView);
       initIndicatorSliderMargin();
+      initIndicatorBackgroundMargin();
       initIndicatorGravity();
       ViewGroup.LayoutParams lp = mIndicatorLayout.getLayoutParams();
       lp.height = ViewGroup.LayoutParams.WRAP_CONTENT;
@@ -376,6 +377,19 @@ public class BannerViewPager<T> extends RelativeLayout implements LifecycleObser
     } else {
       layoutParams.setMargins(indicatorMargin.getLeft(), indicatorMargin.getTop(),
           indicatorMargin.getRight(), indicatorMargin.getBottom());
+    }
+  }
+
+  private void initIndicatorBackgroundMargin() {
+    MarginLayoutParams layoutParams =
+            (MarginLayoutParams) ((View) mIndicatorView).getLayoutParams();
+    BannerOptions.IndicatorMargin indicatorMargin =
+            mBannerManager.getBannerOptions().getIndicatorBackgroundMargin()
+    if (indicatorMargin == null) {
+      layoutParams.setMargins(0, 0, 0, 0);
+    } else {
+      layoutParams.setMargins(indicatorMargin.getLeft(), indicatorMargin.getTop(),
+              indicatorMargin.getRight(), indicatorMargin.getBottom());
     }
   }
 
@@ -1066,6 +1080,12 @@ public class BannerViewPager<T> extends RelativeLayout implements LifecycleObser
   public BannerViewPager<T> setIndicatorMargin(@Px int left, @Px int top, @Px int right,
       @Px int bottom) {
     mBannerManager.getBannerOptions().setIndicatorMargin(left, top, right, bottom);
+    return this;
+  }
+
+  public BannerViewPager<T> setIndicatorBackgrounfMargin(@Px int left, @Px int top, @Px int right,
+                                               @Px int bottom) {
+    mBannerManager.getBannerOptions().setIndicatorBackgroundMargin(left, top, right, bottom);
     return this;
   }
 

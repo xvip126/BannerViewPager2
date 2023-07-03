@@ -67,6 +67,7 @@ public class BannerOptions {
   private float pageScale = DEFAULT_MIN_SCALE;
 
   private IndicatorMargin mIndicatorMargin;
+  private IndicatorMargin mIndicatorBackgroundMargin;
 
   private int mIndicatorVisibility = View.VISIBLE;
 
@@ -232,6 +233,14 @@ public class BannerOptions {
 
   public void setPageScale(float pageScale) {
     this.pageScale = pageScale;
+  }
+
+  public IndicatorMargin getIndicatorBackgroundMargin() {
+    return mIndicatorBackgroundMargin;
+  }
+
+  public void setIndicatorBackgroundMargin(int left, int top, int right, int bottom) {
+    mIndicatorBackgroundMargin = new IndicatorMargin(left, top, right, bottom);
   }
 
   public IndicatorMargin getIndicatorMargin() {
