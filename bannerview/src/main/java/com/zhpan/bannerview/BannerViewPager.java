@@ -28,9 +28,11 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 
 import androidx.annotation.ColorInt;
+import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.Px;
@@ -81,7 +83,7 @@ public class BannerViewPager<T> extends RelativeLayout implements LifecycleObser
 
   private IIndicator mIndicatorView;
 
-  private RelativeLayout mIndicatorLayout;
+  private FrameLayout mIndicatorLayout;
 
   private ViewPager2 mViewPager;
 
@@ -336,6 +338,9 @@ public class BannerViewPager<T> extends RelativeLayout implements LifecycleObser
       lp.height = ViewGroup.LayoutParams.WRAP_CONTENT;
       lp.width = ViewGroup.LayoutParams.WRAP_CONTENT;
       mIndicatorLayout.setLayoutParams(lp);
+      if (mBannerManager.getBannerOptions().getIndicatorBackground() > 0) {
+        mIndicatorLayout.setBackgroundResource(mBannerManager.getBannerOptions().getIndicatorBackground());
+      }
     }
     mIndicatorView.setIndicatorOptions(indicatorOptions);
     indicatorOptions.setPageSize(list.size());
@@ -344,7 +349,7 @@ public class BannerViewPager<T> extends RelativeLayout implements LifecycleObser
 
   private void initIndicatorGravity() {
     LayoutParams layoutParams =
-        (LayoutParams) ((View) mIndicatorView).getLayoutParams();
+        (LayoutParams) ((View) mIndicatorLayout).getLayoutParams();
     switch (mBannerManager.getBannerOptions().getIndicatorGravity()) {
       case CENTER:
         layoutParams.addRule(RelativeLayout.CENTER_HORIZONTAL);
@@ -805,6 +810,11 @@ public class BannerViewPager<T> extends RelativeLayout implements LifecycleObser
    * {@link com.zhpan.bannerview.constants.IndicatorGravity#START}
    * {@link com.zhpan.bannerview.constants.IndicatorGravity#END}
    */
+  public BannerViewPager<T> setIndicatorBackground(@IdRes int bgRes) {
+    mBannerManager.getBannerOptions().setIndicatorBackground(bgRes);
+    return this;
+  }
+
   public BannerViewPager<T> setIndicatorGravity(@AIndicatorGravity int gravity) {
     mBannerManager.getBannerOptions().setIndicatorGravity(gravity);
     return this;

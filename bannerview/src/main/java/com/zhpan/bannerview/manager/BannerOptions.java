@@ -16,6 +16,8 @@ limitations under the License.
 
 package com.zhpan.bannerview.manager;
 
+import static com.zhpan.bannerview.transform.ScaleInTransformer.DEFAULT_MIN_SCALE;
+
 import android.view.View;
 
 import androidx.viewpager2.widget.ViewPager2;
@@ -24,8 +26,6 @@ import com.zhpan.bannerview.constants.PageStyle;
 import com.zhpan.bannerview.utils.BannerUtils;
 import com.zhpan.indicator.enums.IndicatorOrientation;
 import com.zhpan.indicator.option.IndicatorOptions;
-
-import static com.zhpan.bannerview.transform.ScaleInTransformer.DEFAULT_MIN_SCALE;
 
 /**
  * <pre>
@@ -55,6 +55,7 @@ public class BannerOptions {
 
   private int indicatorGravity;
 
+  private int indicatorBackground;
   private int pageMargin;
 
   private int rightRevealWidth;
@@ -88,6 +89,14 @@ public class BannerOptions {
   private boolean autoScrollSmoothly = true;
 
   private final IndicatorOptions mIndicatorOptions;
+
+  public int getIndicatorBackground() {
+    return indicatorBackground;
+  }
+
+  public void setIndicatorBackground(int indicatorBackground) {
+    this.indicatorBackground = indicatorBackground;
+  }
 
   public int getInterval() {
     return interval;
