@@ -382,7 +382,7 @@ public class BannerViewPager<T> extends RelativeLayout implements LifecycleObser
 
   private void initIndicatorBackgroundMargin() {
     MarginLayoutParams layoutParams =
-            (MarginLayoutParams) ((View) mIndicatorView).getLayoutParams();
+            (MarginLayoutParams) ((View) mIndicatorLayout).getLayoutParams();
     BannerOptions.IndicatorMargin indicatorMargin =
             mBannerManager.getBannerOptions().getIndicatorBackgroundMargin();
     if (indicatorMargin == null) {
