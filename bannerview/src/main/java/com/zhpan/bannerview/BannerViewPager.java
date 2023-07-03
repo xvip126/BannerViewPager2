@@ -27,6 +27,7 @@ import android.os.Parcelable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
 import androidx.annotation.ColorInt;
@@ -331,6 +332,10 @@ public class BannerViewPager<T> extends RelativeLayout implements LifecycleObser
       mIndicatorLayout.addView((View) mIndicatorView);
       initIndicatorSliderMargin();
       initIndicatorGravity();
+      ViewGroup.LayoutParams lp = mIndicatorLayout.getLayoutParams();
+      lp.height = ViewGroup.LayoutParams.WRAP_CONTENT;
+      lp.width = ViewGroup.LayoutParams.WRAP_CONTENT;
+      mIndicatorLayout.setLayoutParams(lp);
     }
     mIndicatorView.setIndicatorOptions(indicatorOptions);
     indicatorOptions.setPageSize(list.size());
