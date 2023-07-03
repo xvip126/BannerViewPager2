@@ -83,7 +83,7 @@ public class BannerViewPager<T> extends RelativeLayout implements LifecycleObser
 
   private IIndicator mIndicatorView;
 
-  private FrameLayout mIndicatorLayout;
+  private RelativeLayout mIndicatorLayout;
 
   private ViewPager2 mViewPager;
 
